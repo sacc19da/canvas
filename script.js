@@ -33,6 +33,8 @@ function init() {
 }
 
 function startDrawing(e) {
+    if (!isInDrawingArea(e)) return;
+    
     isDrawing = true;
     [lastX, lastY] = [e.offsetX, e.offsetY];
 }
@@ -71,6 +73,8 @@ function draw(e) {
 
 function startDrawingTouch(e) {
     e.preventDefault();
+    if (!isInDrawingAreaTouch(e)) return;
+    
     isDrawing = true;
     let touch = e.touches[0];
     [lastX, lastY] = [touch.pageX - canvas.offsetLeft, touch.pageY - canvas.offsetTop];
@@ -131,6 +135,17 @@ function setupTools() {
     document.querySelector('.tools-area').appendChild(pencilBtn);
 
     // 其他工具按鈕的生成和事件處理類似，根據需求自定義
+}
+
+function isInDrawingArea(e) {
+    // 確認滑鼠事件坐標是否在繪圖區域內
+    return e.target === canvas;
+}
+
+function isInDrawingAreaTouch(e) {
+    // 確認觸控事件坐標是否在繪圖區域內
+    let touch = e.touches[0];
+    return touch.target === canvas;
 }
 
 // 初始化
