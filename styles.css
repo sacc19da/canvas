@@ -1,101 +1,74 @@
-html, body {
+/* 重置和基本樣式 */
+* {
   margin: 0;
   padding: 0;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-  border: 3px solid;
-  box-sizing: border-box; /* 確保邊框內尺寸計算 */
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  height: calc(100% - 6px); /* 修正計算考慮邊框 */
-  width: calc(100% - 6px); /* 修正計算考慮邊框 */
-  border: 1.5px dashed;
-  margin: 3px; /* 確保與邊框間隔 */
   box-sizing: border-box;
 }
 
-.main {
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+html {
+  border: 1.5px dashed pink;
+}
+
+body {
+  border: 3px dashed blue;
+}
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.drawing-area {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid lightgray;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  padding: 20px;
+  background-color: #f0f0f0;
 }
 
-.toolbar {
+.tools-area {
+  height: 20%; /* 預設工具區高度 */
+  width: 100%;
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  background-color: #ccc;
+  overflow-x: auto;
 }
 
-.button {
-  padding: 10px;
-  border: 1px solid black;
-  margin: 5px;
-  flex-grow: 1;
-  text-align: center;
-}
-
-.color-picker {
-  display: none;
-  position: absolute;
-  bottom: 100%;
-  background: white;
-  border: 1px solid #ccc;
-  padding: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  width: 100px;
-}
-
-.color-square {
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  margin: 2px;
-  border: 1px solid black;
-}
+/* 不同方向的媒體查詢 */
 
 @media (orientation: landscape) {
-  .container {
-    flex-direction: row;
+  .drawing-area {
+    height: 90%;
   }
-  .main {
-    flex: 4; /* 80% 寬度 */
-  }
-  .toolbar {
-    flex: 1; /* 20% 寬度 */
+
+  .tools-area {
+    height: 10%;
   }
 }
 
 @media (orientation: portrait) {
-  .container {
-    flex-direction: column;
+  .drawing-area {
+    height: 80%;
   }
-  .main {
-    flex: 4; /* 80% 高度 */
-  }
-  .toolbar {
-    flex: 1; /* 20% 高度 */
+
+  .tools-area {
+    height: 20%;
   }
 }
 
-@media (max-aspect-ratio: 1/1) {
-  .container {
-    flex-direction: column;
-  }
-  .main {
-    flex: 4; /* 80% 高度 */
-  }
-  .toolbar {
-    flex: 1; /* 20% 高度 */
+@media (max-width: 400px) {
+  .tools-area button {
+    font-size: 0.8rem; /* 按鈕大小調整的示例 */
   }
 }

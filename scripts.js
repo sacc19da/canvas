@@ -1,4 +1,1 @@
-function toggleColorPicker() {
-  var picker = document.getElementById('colorPicker');
-  picker.style.display = picker.style.display === 'block' ? 'none' : 'block';
-}
+// 在這裡實現繪圖功能的JavaScript程式碼
