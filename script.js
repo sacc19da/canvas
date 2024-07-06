@@ -21,8 +21,8 @@ function init() {
     canvas.addEventListener('mouseup', endDrawing);
     canvas.addEventListener('mouseout', endDrawing);
 
-    canvas.addEventListener('touchstart', startDrawingTouch);
-    canvas.addEventListener('touchmove', drawTouch);
+    canvas.addEventListener('touchstart', startDrawingTouch, { passive: false });
+    canvas.addEventListener('touchmove', drawTouch, { passive: false });
     canvas.addEventListener('touchend', endDrawing);
     canvas.addEventListener('touchcancel', endDrawing);
 
@@ -137,15 +137,20 @@ function setupTools() {
     // 其他工具按鈕的生成和事件處理類似，根據需求自定義
 }
 
+// 確保事件處理只在繪圖區域內進行
 function isInDrawingArea(e) {
-    // 確認滑鼠事件坐標是否在繪圖區域內
-    return e.target === canvas;
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    return x >= 0 && x <= rect.width && y >= 0 && y <= rect.height;
 }
 
 function isInDrawingAreaTouch(e) {
-    // 確認觸控事件坐標是否在繪圖區域內
-    let touch = e.touches[0];
-    return touch.target === canvas;
+    const rect = canvas.getBoundingClientRect();
+    const touch = e.touches[0];
+    const x = touch.clientX - rect.left;
+    const y = touch.clientY - rect.top;
+    return x >= 0 && x <= rect.width && y >= 0 && y <= rect.height;
 }
 
 // 初始化
