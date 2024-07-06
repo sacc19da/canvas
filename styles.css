@@ -32,6 +32,14 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #f0f0f0;
+  overflow: hidden; /* 確保內容不會超出 */
+}
+
+#canvas {
+  width: 100%; /* 與 .drawing-area 寬度相符 */
+  height: 100%; /* 與 .drawing-area 高度相符 */
+  max-width: 100%; /* 最大寬度不超過父元素 */
+  max-height: 100%; /* 最大高度不超過父元素 */
 }
 
 .tools-area {
