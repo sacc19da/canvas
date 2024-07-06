@@ -11,9 +11,8 @@ function init() {
     canvas = document.getElementById('canvas');
     ctx = canvas.getContext('2d');
     
-    // 設置canvas寬高
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    // 調整canvas大小以匹配drawing-area大小
+    resizeCanvas();
 
     // 監聽事件：滑鼠與觸控事件
     canvas.addEventListener('mousedown', startDrawing);
@@ -30,6 +29,11 @@ function init() {
 
     // 初始化工具區
     setupTools();
+}
+
+function resizeCanvas() {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
 }
 
 function startDrawing(e) {
@@ -116,11 +120,6 @@ function drawTouch(e) {
 
 function endDrawing() {
     isDrawing = false;
-}
-
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
 }
 
 function setupTools() {
