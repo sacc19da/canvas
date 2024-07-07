@@ -5,18 +5,9 @@
   box-sizing: border-box;
 }
 
-html,
-body {
+body, html {
   height: 100%;
   overflow: hidden;
-}
-
-html {
-  border: 1.5px dashed pink;
-}
-
-body {
-  border: 3px dashed blue;
 }
 
 .wrapper {
@@ -32,14 +23,6 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #f0f0f0;
-  overflow: hidden; /* 確保內容不會超出 */
-}
-
-#canvas {
-  width: 100%; /* 與 .drawing-area 寬度相符 */
-  height: 100%; /* 與 .drawing-area 高度相符 */
-  max-width: 100%; /* 最大寬度不超過父元素 */
-  max-height: 100%; /* 最大高度不超過父元素 */
 }
 
 .tools-area {
@@ -57,26 +40,26 @@ body {
 
 @media (orientation: landscape) {
   .drawing-area {
-    height: 90%;
+      height: 90%;
   }
 
   .tools-area {
-    height: 10%;
+      height: 10%;
   }
 }
 
 @media (orientation: portrait) {
   .drawing-area {
-    height: 80%;
+      height: 80%;
   }
 
   .tools-area {
-    height: 20%;
+      height: 20%;
   }
 }
 
 @media (max-width: 400px) {
   .tools-area button {
-    font-size: 0.8rem; /* 按鈕大小調整的示例 */
+      font-size: 0.8rem; /* 按鈕大小調整的示例 */
   }
 }
